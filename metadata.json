@@ -1,0 +1,7 @@
+{
+  "name": "PORTA Clínica Dental",
+  "description": "Prototipo web moderno y minimalista para PORTA Clínica Dental en Tingo María, Perú. Enfocado en la confianza, servicios dentales de calidad y reserva fácil de citas.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
