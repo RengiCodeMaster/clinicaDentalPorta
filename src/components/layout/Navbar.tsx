@@ -2,9 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { CLINIC_INFO, SERVICES } from '../../constants';
 
+import BookingModal from '../common/BookingModal';
+
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
   useEffect(() => {
@@ -71,12 +74,14 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <a
-              href={`https://wa.me/${CLINIC_INFO.whatsapp}?text=Hola,%20le%20escribo%20desde%20su%20página%20web.%20Quisiera%20información%20para%20agendar%20una%20cita.`}
-              className="bg-porta hover:bg-porta-dark text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg shadow-porta/20 transform hover:-translate-y-0.5 active:scale-95"
+
+            <button
+              onClick={() => setIsBookingOpen(true)}
+              className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-md transform hover:-translate-y-0.5 active:scale-95 flex items-center gap-2"
             >
-              Reservar Cita
-            </a>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              Agendar Cita
+            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -140,17 +145,22 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <div className="mt-6">
-              <a
-                href={`https://wa.me/${CLINIC_INFO.whatsapp}?text=Hola,%20le%20escribo%20desde%20su%20página%20web.%20Quisiera%20información%20para%20agendar%20una%20cita.`}
-                className="block w-full text-center bg-porta text-white px-6 py-4 rounded-2xl font-bold shadow-lg shadow-porta/20"
+            <div className="mt-6 flex flex-col gap-3">
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsBookingOpen(true);
+                }}
+                className="block w-full text-center bg-gray-900 text-white px-6 py-4 rounded-2xl font-bold shadow-lg"
               >
-                Reservar por WhatsApp
-              </a>
+                📅 Ver Horarios Libres
+              </button>
             </div>
           </div>
         </div>
       )}
+
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </nav>
   );
 };

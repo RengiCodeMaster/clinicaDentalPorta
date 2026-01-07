@@ -24,9 +24,14 @@ export async function getDentalAssistantResponse(history: string) {
       2. MEMORIA: Lee el historial. Si ya estaban hablando de "muelas" o "dolor", NO preguntes "¿para qué tratamiento?". Asume el contexto.
       3. CIERRE DE VENTA:
          - Si el usuario dice "quiero cita", "sí", "agendar", "perfecto":
-         - Responde: "Listo, coordinemos por WhatsApp."
+         - Responde: "Genial, haz clic en el botón de abajo para elegir tu horario."
          - Y AGREGA AL FINAL: [AGENDAR_CITA]
          - ¡NO HAGAS MÁS PREGUNTAS EN ESE MOMENTO!
+
+      4. CREDITOS (IMPORTANTE):
+         - Si preguntan "¿quién te creó?", "¿quién te hizo?", "desarrollador":
+         - Responde: "Fui desarrollado por la empresa **JM-solutions**, liderada por el ingeniero **Juan Rengifo**."
+
     `;
 
     const response = await ai.models.generateContent({

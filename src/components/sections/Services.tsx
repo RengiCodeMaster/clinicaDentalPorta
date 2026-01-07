@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SERVICES } from '../../constants';
+import BookingModal from '../common/BookingModal'; // Importar Modal
 
-const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({ service, index }) => {
+const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook: (slug: string) => void }> = ({ service, index, onBook }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
       <div
         className={`relative ${isEven ? 'lg:order-2' : ''} h-[400px] lg:h-[600px] transition-all duration-1000 ease-out transform ${isVisible
           ? 'opacity-100 translate-x-0'
-          : isEven ? 'opacity-0 translate-x-20' : 'opacity-0 -translate-x-20' // If Even (Right), come from Right (+x). If Odd (Left), come from Left (-x).
+          : isEven ? 'opacity-0 translate-x-20' : 'opacity-0 -translate-x-20'
           }`}
       >
         <div className="relative w-full h-full bg-white p-2 rounded-[2.5rem] shadow-2xl shadow-porta/20 rotate-1 hover:rotate-0 transition-transform duration-700 ease-out z-10">
@@ -58,7 +59,7 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
       <div
         className={`${isEven ? 'lg:order-1' : ''} p-6 lg:p-12 transition-all duration-1000 ease-out transform ${isVisible
           ? 'opacity-100 translate-x-0'
-          : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20' // If Even (Left), come from Left (-x). If Odd (Right), come from Right (+x).
+          : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20'
           }`}
       >
         <div className="inline-block px-4 py-1.5 bg-porta-accent/30 rounded-lg text-porta font-bold text-xs tracking-wider uppercase mb-6">
@@ -80,21 +81,21 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
           ))}
         </div>
 
-        <a
-          href={`https://wa.me/51919639809?text=Hola,%20le%20escribo%20desde%20su%20página%20web.%20Deseo%20agendar%20una%20cita%20para%20*${encodeURIComponent(service.title)}*.`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => onBook(service.id)}
           className="inline-flex items-center justify-center gap-2 bg-porta hover:bg-porta-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-porta/20 hover:translate-y-[-4px] hover:shadow-xl w-full sm:w-auto"
         >
           <span>Agendar Cita</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7m7-7H3" /></svg>
-        </a>
+        </button>
       </div>
     </div>
   );
 };
 
 const Services: React.FC = () => {
+  const [bookingSlug, setBookingSlug] = useState<string | null>(null);
+
   return (
     <section id="services" className="bg-white overflow-hidden">
       {/* Header Section */}
@@ -108,9 +109,21 @@ const Services: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         {SERVICES.map((service, index) => (
-          <ServiceItem key={service.id} service={service} index={index} />
+          <ServiceItem
+            key={service.id}
+            service={service}
+            index={index}
+            onBook={(slug) => setBookingSlug(slug)} // Callback para abrir modal con slug
+          />
         ))}
       </div>
+
+      {/* Modal único controlado por el estado del padre */}
+      <BookingModal
+        isOpen={!!bookingSlug}
+        onClose={() => setBookingSlug(null)}
+        serviceSlug={bookingSlug || undefined}
+      />
     </section>
   );
 };
