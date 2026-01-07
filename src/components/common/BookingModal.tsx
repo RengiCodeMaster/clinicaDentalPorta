@@ -12,7 +12,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, serviceSlu
     // Si no, usamos el perfil general (o "tratamientos-generales" como default si prefieres).
     // Tu perfil base es: clinica-dental-porta-gywyrv
     const namespace = "clinica-dental-porta-gywyrv";
-    const calLink = serviceSlug ? `${namespace}/${serviceSlug}` : `${namespace}/tratamientos-generales`;
+    // Si hay slug, vamos directo al servicio. Si no, mostramos el menú de servicios (Perfil).
+    const calLink = serviceSlug ? `${namespace}/${serviceSlug}` : namespace;
 
     useEffect(() => {
         (async function () {
