@@ -62,13 +62,13 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook
           : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20'
           }`}
       >
-        <div className="inline-block px-4 py-1.5 bg-porta-accent/30 rounded-lg text-porta font-bold text-xs tracking-wider uppercase mb-6">
+        <h3 className="inline-block px-4 py-1.5 bg-porta-accent/30 rounded-lg text-porta font-bold text-xs tracking-wider uppercase mb-6">
           {service.title}
-        </div>
-
-        <h3 className="text-3xl lg:text-5xl font-semibold font-outfit text-gray-500 mb-6 leading-tight">
-          {service.description}
         </h3>
+
+        <p className="text-3xl lg:text-5xl font-semibold font-outfit text-gray-500 mb-6 leading-tight">
+          {service.description}
+        </p>
 
         <div className="grid sm:grid-cols-2 gap-4 mb-10">
           {service.details?.map((detail, idx) => (

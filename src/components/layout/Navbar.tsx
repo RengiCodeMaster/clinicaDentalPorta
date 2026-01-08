@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
             <div className="h-14 w-48 relative overflow-hidden">
               <img
                 src="/images/porta-logo.png"
-                alt="PORTA Clínica Dental"
+                alt="Clínica Dental Porta Tingo María"
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-48 w-auto max-w-none"
               />
             </div>
