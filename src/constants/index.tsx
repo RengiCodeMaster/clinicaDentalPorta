@@ -9,8 +9,8 @@ export const CLINIC_INFO = {
   email: "clinicaporta2@gmail.com",
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61560422173377",
-    instagram: "https://instagram.com/clinica.dental.porta",
-    tiktok: "https://tiktok.com/@clinica.dental.porta"
+    instagram: "https://www.instagram.com/clinica_porta/",
+    tiktok: "https://www.tiktok.com/@clinicadentalporta"
   }
 };
 
