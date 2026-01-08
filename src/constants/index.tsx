@@ -139,20 +139,20 @@ export const BEFORE_AFTER = [
   {
     title: "Diseño de Sonrisa",
     description: "Una nueva sonrisa que ilumina el rostro y devuelve la seguridad.",
-    before: "https://placehold.co/400x400/f1f5f9/94a3b8?text=Antes",
-    after: "https://placehold.co/400x400/ccfbf1/0f766e?text=Después"
+    before: "/images/before-placeholder.svg",
+    after: "/images/after-placeholder.svg"
   },
   {
     title: "Implante Dental",
     description: "Recuperar la capacidad de comer y sonreír sin preocupaciones.",
-    before: "https://placehold.co/400x400/f1f5f9/94a3b8?text=Antes",
-    after: "https://placehold.co/400x400/ccfbf1/0f766e?text=Después"
+    before: "/images/before-placeholder.svg",
+    after: "/images/after-placeholder.svg"
   },
   {
     title: "Blanqueamiento Láser",
     description: "Dientes visiblemente más blancos y brillantes en una sola visita.",
-    before: "https://placehold.co/400x400/f1f5f9/94a3b8?text=Antes",
-    after: "https://placehold.co/400x400/ccfbf1/0f766e?text=Después"
+    before: "/images/before-placeholder.svg",
+    after: "/images/after-placeholder.svg"
   }
 ];
 
