@@ -40,18 +40,30 @@ const MissionVision: React.FC = () => {
         <section id="about" className="py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* --- INTRO: MANIFIESTO DE MARCA --- */}
-                <div ref={intro.ref} className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-700 ${intro.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <span className="block text-porta font-bold tracking-[0.3em] uppercase text-sm mb-4">Lo que somos</span>
-                    <h2 className="text-4xl md:text-6xl font-outfit font-bold text-porta-heading mb-8 leading-tight">
-                        Sabemos que nadie salta de alegría por ir al dentista.<br />
-                        <span className="text-porta">Por eso lo hacemos diferente.</span>
-                    </h2>
-                    <p className="text-xl text-gray-600 leading-relaxed font-medium">
-                        Seamos sinceros: a nadie le gusta el sonido de la maquinita ni las inyecciones. Lo entendemos perfectamente.
-                        Por eso en Porta no solo nos preocupamos por tus dientes, nos preocupamos por <strong>ti</strong>.
-                        Queremos que vengas sin miedo y salgas sintiendo que estás en manos de amigos.
-                    </p>
+                <div ref={intro.ref} className={`mb-24 transition-all duration-700 ${intro.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    {/* Top Accent Line */}
+                    <div className="w-full h-px bg-gray-200 mb-12"></div>
+
+                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start lg:items-end">
+                        {/* Left Column: Headline */}
+                        <div className="lg:w-1/2">
+                            <span className="block text-porta font-bold tracking-widest uppercase text-xs mb-6">Lo que somos</span>
+                            <h2 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading leading-tight">
+                                Sabemos que nadie salta de alegría por ir al dentista.
+                                <br /> <span className="text-porta">Por eso lo hacemos diferente.</span>
+                            </h2>
+                        </div>
+
+                        {/* Right Column: Narrative */}
+                        <div className="lg:w-1/2">
+                            <p className="text-lg text-gray-600 leading-relaxed font-medium">
+                                Seamos sinceros: a nadie le gusta el sonido de la maquinita ni las inyecciones. Lo entendemos perfectamente.
+                                Por eso en Porta no solo nos preocupamos por tus dientes, nos preocupamos por <strong>ti</strong>.
+                                <br /><br />
+                                Queremos que vengas sin miedo y salgas sintiendo que estás en manos de amigos.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* --- STORY BLOCK 1: LA MISIÓN --- */}
