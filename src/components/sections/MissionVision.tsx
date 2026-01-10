@@ -67,18 +67,26 @@ const MissionVision: React.FC = () => {
                     </div>
 
                     <div className={`transition-all duration-700 delay-100 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                        <h3 className="text-3xl font-outfit font-bold text-porta-heading mb-6">
-                            Nuestra Misión: <span className="text-porta">Que te sientas en casa</span>
-                        </h3>
-                        <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                            <p>
-                                Para nosotros, tú no eres "el paciente de las 5". Eres un vecino, un amigo, alguien que confía su salud en nuestras manos.
-                                Nuestra meta de todos los días es simple: <strong>que olvides que estás en un consultorio.</strong>
-                            </p>
-                            <p>
-                                Nos tomamos el tiempo para explicarte todo con manzanitas, sin apuros. Si te duele algo, paramos. Si tienes dudas, las respondemos.
-                                Queremos ganarnos tu confianza no con palabras bonitas, sino con un trato suave, honesto y lleno de cariño.
-                            </p>
+                        <div className="relative pl-6 md:pl-10 border-l-4 border-porta/30">
+                            {/* Watermark Background Text */}
+                            <span className="absolute -top-16 -left-10 text-[120px] font-bold text-gray-50 -z-10 select-none opacity-60 font-outfit hidden md:block">
+                                MISIÓN
+                            </span>
+
+                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-8 leading-tight">
+                                Que te sientas <span className="text-porta block">en casa.</span>
+                            </h3>
+
+                            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
+                                <p>
+                                    Para nosotros, tú no eres "el paciente de las 5". Eres un vecino, un amigo, alguien que confía su salud en nuestras manos.
+                                    Nuestra meta de todos los días es simple: <strong>que olvides que estás en un consultorio.</strong>
+                                </p>
+                                <p>
+                                    Nos tomamos el tiempo para explicarte todo con manzanitas, sin apuros. Si te duele algo, paramos. Si tienes dudas, las respondemos.
+                                    Queremos ganarnos tu confianza no con palabras bonitas, sino con un trato suave, honesto y lleno de cariño.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,18 +94,25 @@ const MissionVision: React.FC = () => {
                 {/* --- STORY BLOCK 2: LA VISIÓN (Reverse Layout) --- */}
                 <div ref={vision.ref} className="grid lg:grid-cols-2 gap-16 items-center">
                     <div className={`order-2 lg:order-1 transition-all duration-700 delay-100 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                        <h3 className="text-3xl font-outfit font-bold text-porta-heading mb-6">
-                            Nuestra Visión: <span className="text-porta">Ser el dentista que recomiendas con orgullo</span>
-                        </h3>
-                        <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                            <p>
-                                Soñamos con un Tingo María donde la gente ya no esconda su sonrisa por vergüenza o dolor.
-                                Queremos ser ese lugar al que traes a tus hijos, a tus padres y a tus amigos porque sabes que aquí <strong>no te van a engañar</strong> y te van a tratar bien.
-                            </p>
-                            <p>
-                                Nos capacitamos constantemente y traemos la mejor tecnología, no para presumir, sino para que tú tengas tratamientos que duren y funcionen.
-                                Queremos ser tus dentistas para toda la vida.
-                            </p>
+                        <div className="relative pl-6 md:pl-10 border-l-4 border-porta/30">
+                            {/* Watermark Background Text */}
+                            <span className="absolute -top-16 -left-10 text-[120px] font-bold text-gray-50 -z-10 select-none opacity-60 font-outfit hidden md:block">
+                                VISIÓN
+                            </span>
+
+                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-8 leading-tight">
+                                Ser el dentista que <br /><span className="text-porta">recomiendas con orgullo.</span>
+                            </h3>
+                            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
+                                <p>
+                                    Soñamos con un Tingo María donde la gente ya no esconda su sonrisa por vergüenza o dolor.
+                                    Queremos ser ese lugar al que traes a tus hijos, a tus padres y a tus amigos porque sabes que aquí <strong>no te van a engañar</strong> y te van a tratar bien.
+                                </p>
+                                <p>
+                                    Nos capacitamos constantemente y traemos la mejor tecnología, no para presumir, sino para que tú tengas tratamientos que duren y funcionen.
+                                    Queremos ser tus dentistas para toda la vida.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
