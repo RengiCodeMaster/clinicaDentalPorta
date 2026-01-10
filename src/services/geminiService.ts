@@ -11,7 +11,7 @@ export async function getDentalAssistantResponse(history: string) {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const instructions = `
       Rol: Asistente de "PORTA Clínica Dental".
@@ -40,6 +40,6 @@ export async function getDentalAssistantResponse(history: string) {
 
   } catch (error: any) {
     console.error("Error Gemini:", error);
-    return `Lo siento, hubo un problema técnico (${error.message}). Por favor escríbenos al WhatsApp.`;
+    return "¡Ups! Parece que mi conexión está un poco lenta. 😅 Por favor, contáctanos directamente por WhatsApp para agendar tu cita más rápido. 🦷✨";
   }
 }

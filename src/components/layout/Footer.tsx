@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© 2024 PORTA Clínica Dental. Todos los derechos reservados.</p>
+          <p>© 2026 PORTA Clínica Dental. Todos los derechos reservados.</p>
           <p>Diseñado para Tingo María, Perú.</p>
         </div>
       </div>

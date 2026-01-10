@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* ... (previous code for text section) ... */}
+
           <div
             className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
@@ -69,8 +69,14 @@ const Contact: React.FC = () => {
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-porta-heading">Llámanos</h4> (original line 72, I will match context)
-                  <p className="text-gray-600">{CLINIC_INFO.phone}</p>
+                  <h4 className="font-bold text-porta-heading">Llámanos</h4>
+                  <a
+                    href={`tel:+${CLINIC_INFO.whatsapp}`}
+                    className="text-gray-600 hover:text-porta transition-colors font-medium"
+                    aria-label={`Llamar al ${CLINIC_INFO.phone}`}
+                  >
+                    {CLINIC_INFO.phone}
+                  </a>
                 </div>
               </div>
 
