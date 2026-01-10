@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
           <a href="#home" className="flex items-center space-x-2 group">
             <div className="h-14 md:h-16 flex items-center overflow-visible">
               <img
-                src="/images/porta-logo.png"
+                src="/images/porta-logo.webp"
                 alt="Clínica Dental Porta Tingo María"
                 className="h-full w-auto object-contain transform scale-150 origin-left ml-2 md:ml-4 transition-transform duration-300"
               />

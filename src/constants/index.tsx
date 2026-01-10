@@ -19,7 +19,7 @@ export const SERVICES = [
     id: 'ortodoncia',
     title: 'Ortodoncia (Brackets)',
     description: 'Tu sonrisa es tu firma personal. No solo alineamos dientes; diseñamos la arquitectura de tu confianza para que nunca dejes de sonreír en las fotos.',
-    image: '/images/ortodoncia.jpg',
+    image: '/images/ortodoncia.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -36,7 +36,7 @@ export const SERVICES = [
     id: 'endodoncia',
     title: 'Endodoncia',
     description: '¿Ese dolor agudo no te deja dormir? Es tu diente pidiendo auxilio. No lo des por perdido; somos los paramédicos dentales que le darán una segunda oportunidad de vida.',
-    image: '/images/endodoncia.jpg',
+    image: '/images/endodoncia.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.618.309a6 6 0 01-3.86.517l-2.387-.477a2 2 0 00-1.022.547l-1.16 1.16a2 2 0 002.828 2.828l1.16-1.16z" />
@@ -53,7 +53,7 @@ export const SERVICES = [
     id: 'diseno-de-sonrisa',
     title: 'Diseño de sonrisa (Estética)',
     description: 'El arte y la ciencia se encuentran en tu boca. Analizamos tus rasgos, gestos y personalidad para esculpir unos dientes que no solo brillan, sino que realmente te pertenecen.',
-    image: '/images/estetica-dental.jpg',
+    image: '/images/estetica-dental.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -70,7 +70,7 @@ export const SERVICES = [
     id: 'odontopediatria',
     title: 'Odontopediatría (Niños)',
     description: 'Transformamos el "tengo miedo" en "¿cuándo volvemos?". Creamos un universo de magia donde cuidar los dientes es una misión divertida para pequeños superhéroes.',
-    image: '/images/odontopediatria.jpg',
+    image: '/images/odontopediatria.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -87,7 +87,7 @@ export const SERVICES = [
     id: 'rehabilitacion',
     title: 'Rehabilitación (Prótesis, Coronas)',
     description: 'Devolvemos el tiempo atrás. Reconstruimos piezas dañadas o perdidas con materiales tan naturales que olvidarás cuál es el diente real y cuál es el que hicimos nosotros.',
-    image: '/images/rehabilitacion.jpg',
+    image: '/images/rehabilitacion.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -104,7 +104,7 @@ export const SERVICES = [
     id: 'cirugia-dental',
     title: 'Cirugía dental',
     description: 'Precisión quirúrgica con tacto humano. Resolvemos problemas complejos con técnicas mínimamente invasivas para que tu recuperación sea tan rápida como un abrir y cerrar de ojos.',
-    image: '/images/tratamientos-generales.jpg',
+    image: '/images/tratamientos-generales.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -121,7 +121,7 @@ export const SERVICES = [
     id: 'implante-dental',
     title: 'Implante dental',
     description: 'La segunda oportunidad que tu boca esperaba. Instalamos raíces de titanio que se fusionan contigo, devolviéndote la fuerza de mordida y la estética de un diente natural.',
-    image: '/images/implantologia.jpg',
+    image: '/images/implantologia.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -142,13 +142,13 @@ export const SPECIALISTS = [
     name: "C.D. Judith Rosmery Lavado Porta",
     role: "Cirujano Dentista - C.O.P. 55660",
     bio: "Fundadora y directora médica. Su pasión es transformar vidas a través de sonrisas saludables, combinando experiencia clínica con un trato cálido y personalizado.",
-    image: "/images/dra-judith.jpg"
+    image: "/images/dra-judith.webp"
   },
   {
     name: "C.D. Alexander Céspedes Adriano",
     role: "Cirujano Dentista - C.O.P. 57487",
     bio: "Comprometido con la excelencia y la atención integral. Su enfoque minucioso garantiza diagnósticos precisos y tratamientos efectivos para recuperar tu salud dental.",
-    image: "/images/dr-alesander.jpg"
+    image: "/images/dr-alesander.webp"
   }
 ];
 

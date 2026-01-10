@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-porta: #349093;
+  --color-porta-DEFAULT: #349093;
+  --color-porta-dark: #287073;
+  --color-porta-light: #A8D9DB;
+  --color-porta-accent: #EBF8F9;
+  --color-porta-heading: #546E7A;
+
+  --font-sans: Inter, sans-serif;
+  --font-outfit: Outfit, sans-serif;
+
+  --animate-fall-in: fall-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  --animate-fade-in-up: fade-in-up 0.8s ease-out both;
+}
+
+@keyframes fall-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}

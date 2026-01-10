@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <div className="bg-white/5 rounded-2xl p-4 w-fit mb-6 backdrop-blur-sm border border-white/10">
               <div className="h-32 flex items-center">
                 <img
-                  src="/images/porta-logo.png"
+                  src="/images/porta-logo.webp"
                   alt="PORTA Clínica Dental"
                   className="h-full w-auto object-contain brightness-0 invert opacity-90"
                 />

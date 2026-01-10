@@ -8,14 +8,14 @@
     "description": "¿Buscas dentista en Tingo María? En Clínica Porta te cuidamos con atención delicada y paciencia.",
     "icons": [
         {
-            "src": "/images/porta-logo.png",
+            "src": "/images/porta-logo.webp",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/webp"
         },
         {
-            "src": "/images/porta-logo.png",
+            "src": "/images/porta-logo.webp",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/webp"
         }
     ]
 }

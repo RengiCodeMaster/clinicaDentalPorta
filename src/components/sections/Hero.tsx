@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-bg.jpg"
+          src="/images/hero-bg.webp"
           alt="Clínica Dental Porta - Dentistas en Tingo María - Ortodoncia e Implantes"
           className="w-full h-full object-cover object-center"
         />

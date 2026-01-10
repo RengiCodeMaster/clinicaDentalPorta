@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
             }`}
         >
           <iframe
-            src="https://www.google.com/maps?q=Jr.+Jose+Prato+352,+Tingo+Maria&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.863116805728!2d-76.00166252414706!3d-9.295449097721865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a6462725555555%3A0x0!2zOSwyOSc1My42IlMgNzXCsDU5JzU5LjQiVw!5e0!3m2!1ses!2spe!4v1704918231234!5m2!1ses!2spe"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -176,7 +176,7 @@ const Contact: React.FC = () => {
           ></iframe>
 
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Jr.+José+Prato+352,+Tingo+María"
+            href="https://www.google.com/maps/dir/?api=1&destination=Jr.+José+Prato+352,+Tingo+María,+Huánuco,+Perú"
             target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-6 right-6 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold shadow-2xl hover:bg-gray-50 transition-all flex items-center gap-2 z-10 group border border-gray-100"

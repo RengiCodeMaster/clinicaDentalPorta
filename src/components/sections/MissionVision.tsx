@@ -59,14 +59,11 @@ const MissionVision: React.FC = () => {
                     <div className={`relative transition-all duration-1000 delay-200 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-32'}`}>
                         <div className="absolute inset-0 bg-porta-light/30 rounded-[3rem] transform -rotate-3 scale-105 z-0"></div>
                         <img
-                            src="/images/dra-judith-xray.jpg"
+                            src="/images/dra-judith-xray.webp"
                             alt="Dra. Judith Analizando Caso"
                             className="relative z-10 w-full h-[500px] object-cover rounded-[3rem] shadow-2xl"
                         />
-                        <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs hidden md:block animate-bounce-slow">
-                            <p className="text-porta-heading font-bold text-lg">"Trato de familia"</p>
-                            <p className="text-gray-500 text-sm">Aquí te escuchamos de verdad.</p>
-                        </div>
+
                     </div>
 
                     <div className={`transition-all duration-1000 delay-300 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-32'}`}>
@@ -107,14 +104,11 @@ const MissionVision: React.FC = () => {
                     <div className={`relative order-1 lg:order-2 transition-all duration-1000 delay-600 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-32'}`}>
                         <div className="absolute inset-0 bg-porta-dark/10 rounded-[3rem] transform rotate-3 scale-105 z-0"></div>
                         <img
-                            src="/images/dr-alesander-xray.jpg"
+                            src="/images/dr-alesander-xray.webp"
                             alt="Dr. Alexander Analizando Radiografía"
                             className="relative z-10 w-full h-[500px] object-cover rounded-[3rem] shadow-2xl"
                         />
-                        <div className="absolute -top-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs hidden md:block animate-pulse">
-                            <p className="text-porta-heading font-bold text-lg">Honestidad ante todo</p>
-                            <p className="text-gray-500 text-sm">Te decimos siempre la verdad.</p>
-                        </div>
+
                     </div>
                 </div>
 
