@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
 
           <div>
             <h4 className="font-bold text-lg mb-6">Enlaces</h4>
-            <ul className="space-y-4 text-gray-400">
+            <ul className="space-y-4 text-gray-300">
               <li><a href="#home" className="hover:text-porta transition-colors">Inicio</a></li>
               <li><a href="#services" className="hover:text-porta transition-colors">Servicios</a></li>
               <li><a href="#about" className="hover:text-porta transition-colors">Nosotros</a></li>
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
 
           <div>
             <h4 className="font-bold text-lg mb-6">Horarios</h4>
-            <ul className="space-y-4 text-gray-400">
+            <ul className="space-y-4 text-gray-300">
               <li className="flex justify-between"><span>Lunes - Viernes:</span> <span className="text-white">9am - 8pm</span></li>
               <li className="flex justify-between"><span>Sábado:</span> <span className="text-white">9am - 1pm</span></li>
               <li className="flex justify-between"><span>Domingo:</span> <span className="text-porta">Cerrado</span></li>

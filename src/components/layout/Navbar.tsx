@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-xl bg-gray-50 text-gray-900 border border-gray-100"
-              aria-label="Menu"
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (

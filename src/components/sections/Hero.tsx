@@ -10,6 +10,8 @@ const Hero: React.FC = () => {
           src="/images/hero-bg.webp"
           alt="Clínica Dental Porta - Dentistas en Tingo María - Ortodoncia e Implantes"
           className="w-full h-full object-cover object-center"
+          fetchPriority="high"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/20 lg:to-transparent"></div>
       </div>

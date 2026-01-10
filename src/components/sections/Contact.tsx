@@ -93,13 +93,13 @@ const Contact: React.FC = () => {
 
             {/* Socials */}
             <div className="flex gap-4">
-              <a href={CLINIC_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-[#1877F2] hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
+              <a href={CLINIC_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visitar Facebook" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-[#1877F2] hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.648 0-2.928 1.67-2.928 3.403v1.568h3.917l-.523 3.667h-3.394v7.98H9.101Z" /></svg>
               </a>
-              <a href={CLINIC_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-[#E4405F] hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
+              <a href={CLINIC_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visitar Instagram" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-[#E4405F] hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M18,5A1,1 0 0,1 19,6A1,1 0 0,1 18,7A1,1 0 0,1 17,6A1,1 0 0,1 18,5Z" /></svg>
               </a>
-              <a href={CLINIC_INFO.socials.tiktok} target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-black hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
+              <a href={CLINIC_INFO.socials.tiktok} target="_blank" rel="noopener noreferrer" aria-label="Visitar TikTok" className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-black hover:text-white rounded-xl transition-all border border-transparent hover:border-gray-200">
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" /></svg>
               </a>
             </div>
@@ -111,22 +111,22 @@ const Contact: React.FC = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">Nombre</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Tu nombre"
-                    className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-porta focus:bg-white rounded-2xl transition-all"
-                    required
-                  />
-                </div>
+                <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-2">Nombre</label>
+                <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Tu nombre"
+                  className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-porta focus:bg-white rounded-2xl transition-all"
+                  required
+                />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">Motivo de consulta</label>
+                <label htmlFor="reason" className="block text-sm font-bold text-gray-700 mb-2">Motivo de consulta</label>
                 <select
+                  id="reason"
                   name="reason"
                   value={formData.reason}
                   onChange={handleChange}
@@ -140,8 +140,9 @@ const Contact: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">Mensaje (opcional)</label>
+                <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">Mensaje (opcional)</label>
                 <textarea
+                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
