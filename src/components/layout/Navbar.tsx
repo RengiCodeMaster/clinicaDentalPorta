@@ -2,12 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { CLINIC_INFO, SERVICES } from '../../constants';
 
-import BookingModal from '../common/BookingModal';
-
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,52 +15,52 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Inicio', href: '#home', hasDropdown: false },
-    { name: 'Servicios', href: '#services', hasDropdown: true },
     { name: 'Nosotros', href: '#about', hasDropdown: false },
+    { name: 'Equipo', href: '#team', hasDropdown: false },
+    { name: 'Servicios', href: '#services', hasDropdown: true },
     { name: 'Contacto', href: '#contact', hasDropdown: false },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md py-3 shadow-md border-b border-gray-100' : 'bg-white/50 backdrop-blur-sm py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md py-2 shadow-md border-b border-gray-100' : 'bg-white/50 backdrop-blur-sm py-3'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <a href="#home" className="flex items-center space-x-2 group">
-            <div className="h-14 w-48 relative overflow-hidden">
+            <div className="h-14 md:h-16 flex items-center overflow-visible">
               <img
                 src="/images/porta-logo.png"
                 alt="Clínica Dental Porta Tingo María"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-48 w-auto max-w-none"
+                className="h-full w-auto object-contain transform scale-150 origin-left ml-2 md:ml-4 transition-transform duration-300"
               />
             </div>
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <div key={link.name} className="relative group">
                 <a
                   href={link.href}
-                  className="font-semibold text-sm text-gray-700 transition-colors hover:text-porta py-2 block flex items-center gap-1"
+                  className="font-outfit font-medium text-[16px] text-gray-600 transition-all hover:text-porta py-2 block flex items-center gap-1.5 hover:scale-105"
                 >
                   {link.name}
                   {link.hasDropdown && (
-                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180 text-porta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                   )}
                 </a>
 
                 {/* Desktop Dropdown */}
                 {link.hasDropdown && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-64">
-                    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-2 overflow-hidden">
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-72">
+                    <div className="bg-white rounded-3xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 p-3 overflow-hidden ring-1 ring-black/5">
                       {SERVICES.map(service => (
                         <a
                           key={service.id}
                           href={`#service-${service.id}`}
-                          className="block px-4 py-3 rounded-xl hover:bg-porta-accent/30 text-gray-700 hover:text-porta font-medium text-sm transition-colors flex items-center gap-2"
+                          className="block px-4 py-3.5 rounded-2xl hover:bg-porta-accent/50 text-gray-600 hover:text-porta font-medium text-sm transition-all flex items-center gap-3 group/item"
                         >
-                          <span className="p-1.5 bg-gray-50 rounded-lg text-porta">
-                            {/* Simple version of icon */}
+                          <span className="p-2 bg-gray-50 rounded-xl text-porta group-hover/item:bg-white transition-colors shadow-sm">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                           </span>
                           {service.title}
@@ -74,14 +71,6 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-
-            <button
-              onClick={() => setIsBookingOpen(true)}
-              className="bg-gray-900 hover:bg-black text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-md transform hover:-translate-y-0.5 active:scale-95 flex items-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-              Agendar Cita
-            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -145,22 +134,10 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <div className="mt-6 flex flex-col gap-3">
-              <button
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setIsBookingOpen(true);
-                }}
-                className="block w-full text-center bg-gray-900 text-white px-6 py-4 rounded-2xl font-bold shadow-lg"
-              >
-                📅 Ver Horarios Libres
-              </button>
-            </div>
+
           </div>
         </div>
       )}
-
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </nav>
   );
 };

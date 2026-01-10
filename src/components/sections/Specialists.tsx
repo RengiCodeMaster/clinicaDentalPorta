@@ -21,7 +21,7 @@ const Specialists: React.FC = () => {
   }, []);
 
   return (
-    <section id="about" className="py-24 overflow-hidden" ref={sectionRef}>
+    <section id="team" className="py-24 overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:flex items-center gap-16">
           {/* Text Section - Slides from Left */}
@@ -30,7 +30,7 @@ const Specialists: React.FC = () => {
               }`}
           >
             <h2 className="text-porta font-bold tracking-widest uppercase text-sm mb-3">Tu equipo de confianza</h2>
-            <p className="text-4xl font-outfit font-bold text-gray-900 mb-6">Más que dentistas, somos tu familia dental</p>
+            <p className="text-4xl font-outfit font-bold text-porta-heading mb-6">Más que dentistas, somos tu familia dental</p>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Somos vecinos de Tingo María y sabemos que ir al dentista no siempre es fácil. Por eso, nos tomamos el tiempo de escucharte y explicarte todo con paciencia, para que te sientas tranquilo y seguro en cada cita.
             </p>
@@ -66,7 +66,7 @@ const Specialists: React.FC = () => {
                 </div>
                 {/* Always visible info on mobile/idle */}
                 <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl group-hover:hidden transition-all shadow-lg">
-                  <h4 className="font-bold text-gray-900">{spec.name}</h4>
+                  <h4 className="font-bold text-porta-heading">{spec.name}</h4>
                   <p className="text-xs text-porta-dark font-semibold uppercase">{spec.role}</p>
                 </div>
               </div>

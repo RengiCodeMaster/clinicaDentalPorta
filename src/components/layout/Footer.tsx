@@ -8,12 +8,12 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="bg-white rounded-xl p-3 w-fit mb-6">
-              <div className="h-16 w-56 relative overflow-hidden">
+            <div className="bg-white/5 rounded-2xl p-4 w-fit mb-6 backdrop-blur-sm border border-white/10">
+              <div className="h-32 flex items-center">
                 <img
                   src="/images/porta-logo.png"
                   alt="PORTA Clínica Dental"
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-56 w-auto max-w-none"
+                  className="h-full w-auto object-contain brightness-0 invert opacity-90"
                 />
               </div>
             </div>

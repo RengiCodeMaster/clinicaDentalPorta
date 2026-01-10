@@ -28,7 +28,7 @@ const BeforeAfter: React.FC = () => {
                         }`}
                 >
                     <p className="text-porta font-bold tracking-widest uppercase text-sm mb-3">Resultados Reales</p>
-                    <h2 className="text-4xl font-outfit font-bold text-gray-900">Historias de Cambio</h2>
+                    <h2 className="text-4xl font-outfit font-bold text-porta-heading">Historias de Cambio</h2>
                     <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
                         No hay mejor prueba de nuestro trabajo que la felicidad de nuestros pacientes. Descubre cómo una nueva sonrisa puede cambiar una vida.
                     </p>
@@ -60,7 +60,7 @@ const BeforeAfter: React.FC = () => {
                             </div>
 
                             <div className="p-8">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                                <h3 className="text-xl font-bold text-porta-heading mb-2">{item.title}</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
                             </div>
                         </div>

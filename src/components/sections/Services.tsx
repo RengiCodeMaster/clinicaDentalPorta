@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SERVICES } from '../../constants';
-import BookingModal from '../common/BookingModal'; // Importar Modal
 
-const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook: (slug: string) => void }> = ({ service, index, onBook }) => {
+const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({ service, index }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -42,13 +41,7 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook
             alt={service.title}
             className="w-full h-full object-cover rounded-[2rem]"
           />
-          {/* Floating Badge */}
-          <div className={`absolute -bottom-6 ${isEven ? '-left-6' : '-right-6'} bg-white p-4 rounded-2xl shadow-xl animate-bounce-slow hidden lg:block`}>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <p className="text-porta font-bold text-sm">Disponible Hoy</p>
-            </div>
-          </div>
+
         </div>
 
         {/* Decorative Blur behind image */}
@@ -62,11 +55,11 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook
           : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20'
           }`}
       >
-        <h3 className="inline-block px-4 py-1.5 bg-porta-accent/30 rounded-lg text-porta font-bold text-xs tracking-wider uppercase mb-6">
+        <h3 className="text-3xl lg:text-4xl font-outfit font-bold text-porta-heading mb-6 leading-tight">
           {service.title}
         </h3>
 
-        <p className="text-3xl lg:text-5xl font-semibold font-outfit text-gray-500 mb-6 leading-tight">
+        <p className="text-lg text-gray-600 mb-8 leading-relaxed font-medium">
           {service.description}
         </p>
 
@@ -81,21 +74,19 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number; onBook
           ))}
         </div>
 
-        <button
-          onClick={() => onBook(service.id)}
+        <a
+          href="#contact"
           className="inline-flex items-center justify-center gap-2 bg-porta hover:bg-porta-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-porta/20 hover:translate-y-[-4px] hover:shadow-xl w-full sm:w-auto"
         >
           <span>Agendar Cita</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7m7-7H3" /></svg>
-        </button>
+        </a>
       </div>
     </div>
   );
 };
 
 const Services: React.FC = () => {
-  const [bookingSlug, setBookingSlug] = useState<string | null>(null);
-
   return (
     <section id="services" className="bg-white overflow-hidden">
       {/* Header Section */}
@@ -113,17 +104,9 @@ const Services: React.FC = () => {
             key={service.id}
             service={service}
             index={index}
-            onBook={(slug) => setBookingSlug(slug)} // Callback para abrir modal con slug
           />
         ))}
       </div>
-
-      {/* Modal único controlado por el estado del padre */}
-      <BookingModal
-        isOpen={!!bookingSlug}
-        onClose={() => setBookingSlug(null)}
-        serviceSlug={bookingSlug || undefined}
-      />
     </section>
   );
 };

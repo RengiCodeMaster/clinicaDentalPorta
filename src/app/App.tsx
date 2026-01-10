@@ -2,9 +2,10 @@
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../components/sections/Hero';
+import MissionVision from '../components/sections/MissionVision';
 import Services from '../components/sections/Services';
 import Specialists from '../components/sections/Specialists';
-import BeforeAfter from '../components/sections/BeforeAfter';
+
 import Contact from '../components/sections/Contact';
 import Footer from '../components/layout/Footer';
 import WhatsAppFab from '../components/chat/WhatsAppFab';
@@ -16,9 +17,10 @@ const App: React.FC = () => {
       <Navbar />
       <main>
         <Hero />
-        <Services />
+        <MissionVision />
         <Specialists />
-        <BeforeAfter />
+        <Services />
+
         <Contact />
       </main>
       <Footer />
@@ -37,6 +39,10 @@ const App: React.FC = () => {
           from { transform: translateY(20px); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
         }
+        @keyframes slideDown {
+          from { transform: translateY(-30px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
         @keyframes bounceSlow {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
@@ -48,6 +54,7 @@ const App: React.FC = () => {
         }
         .animate-fade-in { animation: fadeIn 0.3s ease-out; }
         .animate-slide-up { animation: slideUp 0.4s ease-out; }
+        .animate-fall-in { opacity: 0; animation: slideDown 0.6s ease-out forwards; will-change: transform, opacity; }
         .animate-bounce-slow { animation: bounceSlow 3s infinite ease-in-out; }
         .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-fade-in-up { opacity: 0; animation: slideUp 0.8s ease-out forwards; will-change: transform, opacity; }
