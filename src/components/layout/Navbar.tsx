@@ -113,24 +113,32 @@ const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.hasDropdown ? (
-                  <div>
-                    <button
-                      onClick={() => setOpenSubMenu(openSubMenu === link.name ? null : link.name)}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-base font-bold transition-colors ${isActive(link.href) ? 'text-porta bg-porta-accent/30' : 'text-gray-700 hover:text-porta hover:bg-porta-accent/50'
-                        }`}
-                    >
-                      {link.name}
-                      <svg className={`w-5 h-5 transition-transform ${openSubMenu === link.name ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                    </button>
+                  <div className="space-y-1">
+                    <div className="flex items-center">
+                      <Link
+                        to="/servicios"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`flex-1 flex items-center px-4 py-3 rounded-l-2xl text-base font-bold transition-colors ${location.pathname === '/servicios' ? 'text-porta bg-porta-accent/30' : 'text-gray-700 hover:text-porta hover:bg-porta-accent/50'
+                          }`}
+                      >
+                        Servicios
+                      </Link>
+                      <button
+                        onClick={() => setOpenSubMenu(openSubMenu === 'Servicios' ? null : 'Servicios')}
+                        className={`px-4 py-3 rounded-r-2xl border-l border-gray-100 transition-colors ${openSubMenu === 'Servicios' ? 'bg-porta text-white' : 'bg-gray-50 text-gray-500'}`}
+                      >
+                        <svg className={`w-5 h-5 transition-transform ${openSubMenu === 'Servicios' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                      </button>
+                    </div>
 
-                    {openSubMenu === link.name && (
-                      <div className="pl-4 pr-2 space-y-1 mb-2">
+                    {openSubMenu === 'Servicios' && (
+                      <div className="pl-4 pr-2 space-y-1 mt-1 mb-2">
                         {SERVICES.map(service => (
                           <Link
                             key={service.id}
                             to={`/servicios#${service.id}`}
                             onClick={() => setIsMenuOpen(false)}
-                            className="block px-4 py-3 rounded-xl bg-gray-50 text-gray-600 text-sm font-medium hover:text-porta hover:pl-6 transition-all"
+                            className="block px-4 py-3 rounded-xl bg-gray-50 text-gray-600 text-sm font-medium hover:text-porta hover:pl-6 transition-all border-l-2 border-transparent hover:border-porta"
                           >
                             {service.title}
                           </Link>

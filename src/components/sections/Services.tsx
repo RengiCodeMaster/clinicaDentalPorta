@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SERVICES } from '../../constants';
 
 const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({ service, index }) => {
@@ -25,7 +25,7 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
 
   return (
     <div
-      id={`service-${service.id}`}
+      id={service.id}
       ref={ref}
       className="grid lg:grid-cols-2 gap-0 lg:gap-12 items-center py-12 lg:py-20 min-h-[auto] lg:min-h-[80vh] overflow-hidden"
     >
@@ -99,6 +99,28 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
 };
 
 const Services: React.FC = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Delay to allow for page transitions and rendering
+        setTimeout(() => {
+          const navbarHeight = 100; // Approximate navbar height
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 300);
+      }
+    }
+  }, [hash]);
+
   return (
     <section id="services" className="bg-white overflow-hidden">
       {/* Header Section */}
