@@ -4,32 +4,83 @@ import Hero from '../components/sections/Hero';
 import { SERVICES } from '../constants';
 
 /* ─── Animated wrapper ─── */
-const FadeInSection: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({ children, delay = 0, className = '' }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [visible, setVisible] = useState(false);
+const FadeInSection: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({ children, delay = 0, className = "" }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const domRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-            { threshold: 0.15 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const current = domRef.current;
+        if (current) observer.observe(current);
+
+        return () => {
+            if (current) observer.unobserve(current);
+        };
     }, []);
 
     return (
         <div
-            ref={ref}
-            className={className}
-            style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'translateY(0)' : 'translateY(40px)',
-                transition: `opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94) ${delay}s, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94) ${delay}s`,
-            }}
+            ref={domRef}
+            className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                } ${className}`}
+            style={{ transitionDelay: `${delay}s` }}
         >
             {children}
         </div>
     );
+};
+
+const AnimatedCounter: React.FC<{ target: number; suffix?: string; duration?: number }> = ({ target, suffix = "", duration = 1200 }) => {
+    const [count, setCount] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false);
+    const countRef = useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setHasStarted(true);
+                observer.disconnect();
+            }
+        }, { threshold: 0.1 }); // Trigger earlier
+
+        if (countRef.current) observer.observe(countRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!hasStarted) return;
+
+        let startTimestamp: number | null = null;
+        // Zippy duration: smaller numbers finish faster (800ms)
+        const finalDuration = target < 20 ? 800 : duration;
+
+        const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / finalDuration, 1);
+
+            // Fast ease-out effect
+            const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+            const currentCount = Math.floor(easeOutCubic(progress) * target);
+
+            setCount(currentCount);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                setCount(target);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }, [hasStarted, target, duration]);
+
+    return <span ref={countRef}>{count}{suffix}</span>;
 };
 
 /* ─── Data ─── */
@@ -244,22 +295,30 @@ const HomePage: React.FC = () => {
                     <FadeInSection delay={0.4}>
                         <div className="flex flex-wrap items-center justify-center gap-8 mt-14 pt-10 border-t border-white/15">
                             <div className="text-center">
-                                <p className="text-3xl font-outfit font-bold text-white">10+</p>
+                                <p className="text-3xl font-outfit font-bold text-white">
+                                    <AnimatedCounter target={10} suffix="+" />
+                                </p>
                                 <p className="text-white/60 text-sm font-medium mt-1">Años de experiencia</p>
                             </div>
                             <div className="w-px h-10 bg-white/20 hidden sm:block" />
                             <div className="text-center">
-                                <p className="text-3xl font-outfit font-bold text-white">5k+</p>
+                                <p className="text-3xl font-outfit font-bold text-white">
+                                    <AnimatedCounter target={5} suffix="k+" />
+                                </p>
                                 <p className="text-white/60 text-sm font-medium mt-1">Sonrisas transformadas</p>
                             </div>
                             <div className="w-px h-10 bg-white/20 hidden sm:block" />
                             <div className="text-center">
-                                <p className="text-3xl font-outfit font-bold text-white">7</p>
+                                <p className="text-3xl font-outfit font-bold text-white">
+                                    <AnimatedCounter target={7} />
+                                </p>
                                 <p className="text-white/60 text-sm font-medium mt-1">Especialidades dentales</p>
                             </div>
                             <div className="w-px h-10 bg-white/20 hidden sm:block" />
                             <div className="text-center">
-                                <p className="text-3xl font-outfit font-bold text-white">4</p>
+                                <p className="text-3xl font-outfit font-bold text-white">
+                                    <AnimatedCounter target={4} />
+                                </p>
                                 <p className="text-white/60 text-sm font-medium mt-1">Profesionales dedicados</p>
                             </div>
                         </div>
