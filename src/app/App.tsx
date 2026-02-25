@@ -1,68 +1,74 @@
 
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
-import Hero from '../components/sections/Hero';
-import MissionVision from '../components/sections/MissionVision';
-import Services from '../components/sections/Services';
-import Specialists from '../components/sections/Specialists';
-
-import Contact from '../components/sections/Contact';
 import Footer from '../components/layout/Footer';
 import WhatsAppFab from '../components/chat/WhatsAppFab';
-import AIChat from '../components/chat/AIChat';
+import ScrollToTop from '../components/common/ScrollToTop';
+import PageTransition from '../components/common/PageTransition';
+
+import HomePage from '../pages/HomePage';
+import NosotrosPage from '../pages/NosotrosPage';
+import EquipoPage from '../pages/EquipoPage';
+import ServiciosPage from '../pages/ServiciosPage';
+import ContactoPage from '../pages/ContactoPage';
 
 const App: React.FC = () => {
   return (
-    <div className="relative">
-      <Navbar />
-      <main>
-        <Hero />
-        <MissionVision />
-        <Specialists />
-        <Services />
+    <BrowserRouter>
+      <ScrollToTop />
+      <PageTransition />
+      <div className="relative">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/nosotros" element={<NosotrosPage />} />
+            <Route path="/equipo" element={<EquipoPage />} />
+            <Route path="/servicios" element={<ServiciosPage />} />
+            <Route path="/contacto" element={<ContactoPage />} />
+          </Routes>
+        </main>
+        <Footer />
 
-        <Contact />
-      </main>
-      <Footer />
+        {/* Floating Elements */}
+        <WhatsAppFab />
 
-      {/* Floating Elements */}
-      <WhatsAppFab />
-      <AIChat />
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slideDown {
-          from { transform: translateY(-30px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes bounceSlow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        @keyframes popIn {
-          0% { opacity: 0; transform: scale(0.8) translateY(20px); }
-          50% { opacity: 1; transform: scale(1.02); }
-          100% { transform: scale(1) translateY(0); }
-        }
-        .animate-fade-in { animation: fadeIn 0.3s ease-out; }
-        .animate-slide-up { animation: slideUp 0.4s ease-out; }
-        .animate-fall-in { opacity: 0; animation: slideDown 0.6s ease-out forwards; will-change: transform, opacity; }
-        .animate-bounce-slow { animation: bounceSlow 3s infinite ease-in-out; }
-        .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .animate-fade-in-up { opacity: 0; animation: slideUp 0.8s ease-out forwards; will-change: transform, opacity; }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-      `}} />
-    </div>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { transform: scale(1) translateY(0); }
+          }
+          .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+          .animate-slide-up { animation: slideUp 0.4s ease-out; }
+          .animate-fall-in { opacity: 0; animation: slideDown 0.6s ease-out forwards; will-change: transform, opacity; }
+          .animate-bounce-slow { animation: bounceSlow 3s infinite ease-in-out; }
+          .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+          .animate-fade-in-up { opacity: 0; animation: slideUp 0.8s ease-out forwards; will-change: transform, opacity; }
+          .delay-100 { animation-delay: 0.1s; }
+          .delay-200 { animation-delay: 0.2s; }
+          .delay-300 { animation-delay: 0.3s; }
+        `}} />
+      </div>
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '../../constants';
 
 const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({ service, index }) => {
@@ -85,13 +86,13 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
           ))}
         </div>
 
-        <a
-          href="#contact"
+        <Link
+          to="/contacto"
           className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-porta hover:bg-porta-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-porta/20 hover:translate-y-[-4px] hover:shadow-xl group"
         >
           <span>Agendar Cita</span>
           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7-7 7m7-7H3" /></svg>
-        </a>
+        </Link>
       </div>
     </div>
   );

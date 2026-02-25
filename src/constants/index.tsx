@@ -140,15 +140,35 @@ export const SERVICES = [
 export const SPECIALISTS = [
   {
     name: "C.D. Judith Rosmery Lavado Porta",
-    role: "Cirujano Dentista - C.O.P. 55660",
+    role: "Fundadora & Directora Médica",
+    subtitle: "Cirujano Dentista - C.O.P. 55660",
     bio: "Fundadora y directora médica. Su pasión es transformar vidas a través de sonrisas saludables, combinando experiencia clínica con un trato cálido y personalizado.",
-    image: "/images/dra-judith.webp"
+    image: "/images/dra-judith.webp",
+    featured: true
   },
   {
     name: "C.D. Alexander Céspedes Adriano",
-    role: "Cirujano Dentista - C.O.P. 57487",
+    role: "Cirujano Dentista",
+    subtitle: "C.O.P. 57487",
     bio: "Comprometido con la excelencia y la atención integral. Su enfoque minucioso garantiza diagnósticos precisos y tratamientos efectivos para recuperar tu salud dental.",
-    image: "/images/dr-alesander.webp"
+    image: "/images/dr-alesander.webp",
+    featured: false
+  },
+  {
+    name: "C.D. Esterling Ugarte C.",
+    role: "Esp. Implantología Oral",
+    subtitle: "R.N.E. 3795",
+    bio: "Especialista en implantología oral. Su experiencia y precisión quirúrgica devuelven la funcionalidad y estética dental con implantes de última generación.",
+    image: "/images/dr-esterling.webp",
+    featured: false
+  },
+  {
+    name: "C.D. Johanna Sánchez O.",
+    role: "Cirujano Dentista",
+    subtitle: "C.O.P. 39743",
+    bio: "Profesional dedicada a brindar atención dental de calidad. Su compromiso con el bienestar del paciente y su calidez humana hacen de cada consulta una experiencia confortable.",
+    image: "/images/dra-johanna.webp",
+    featured: false
   }
 ];
 
@@ -173,48 +193,3 @@ export const BEFORE_AFTER = [
   }
 ];
 
-export const CHATBOT_KNOWLEDGE = `
-PRECIOS Y SERVICIOS OFICIALES (Usar estos datos como verdad absoluta):
-
-1. CONSULTA / DIAGNÓSTICO:
-   - Costo: S/ 20.00 (Gratis si se realiza el tratamiento).
-   - Incluye: Revisión completa, cámara intraoral y plan de tratamiento.
-
-2. CURACIONES (RESTAURACIONES):
-   - Resina Simple (una cara): S/ 80.00
-   - Resina Compuesta (dos caras): S/ 80.00
-   - Resina Estética (sector anterior): S/ 100.00 a S/ 150.00
-   - Se usa resina de alta estética (3M y Palfique).
-
-3. LIMPIEZA DENTAL (PROFILAXIS):
-   - Básica (niños): S/ 50.00
-   - Profunda (ultrasonido + flúor): S/ 80.00
-   - Periodontal (destartraje completo): S/ 120.00
-
-4. BLANQUEAMIENTO:
-   - Casero (férulas): S/ 250.00
-   - Consultorio (Láser - 3 sesiones): S/ 350.00
-   - Mixto (Láser + Férulas): S/ 500.00
-
-5. EXTRACCIONES:
-   - Simple (movilidad): S/ 50.00
-   - Compleja (raíz remanente): S/ 80.00 - S/ 120.00
-   - Tercera Molar (Muela del Juicio): Desde S/ 250.00 (Requiere radiografía).
-
-6. ENDODONCIA (TRATAMIENTO DE CONDUCTO):
-   - Unirradicular (dientes delanteros): S/ 300.00
-   - Premolares: S/ 350.00
-   - Molares: S/ 450.00
-
-7. ORTODONCIA (BRACKETS):
-   - Inicial (Instalación): S/ 300.00 (Metálicos)
-   - Mensualidad: S/ 100.00
-   - Brackets Estéticos (Zafiro): Instalación S/ 800.00 / Mensual S/ 150.00
-
-HORARIOS DE ATENCIÓN:
-- Lunes a Viernes: 9:00 AM - 1:00 PM y 3:00 PM - 8:00 PM
-- Sábados: 9:00 AM - 6:00 PM
-
-UBICACIÓN:
-- Jr. José Prato 352, Tingo María (A media cuadra de la plaza de armas).
-`;

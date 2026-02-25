@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CLINIC_INFO } from '../../constants';
 
 const Footer: React.FC = () => {
@@ -23,17 +24,17 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Enlaces</h4>
+            <h3 className="font-bold text-lg mb-6">Enlaces</h3>
             <ul className="space-y-4 text-gray-300">
-              <li><a href="#home" className="hover:text-porta transition-colors">Inicio</a></li>
-              <li><a href="#services" className="hover:text-porta transition-colors">Servicios</a></li>
-              <li><a href="#about" className="hover:text-porta transition-colors">Nosotros</a></li>
-              <li><a href="#contact" className="hover:text-porta transition-colors">Contacto</a></li>
+              <li><Link to="/" className="hover:text-porta transition-colors">Inicio</Link></li>
+              <li><Link to="/servicios" className="hover:text-porta transition-colors">Servicios</Link></li>
+              <li><Link to="/nosotros" className="hover:text-porta transition-colors">Nosotros</Link></li>
+              <li><Link to="/contacto" className="hover:text-porta transition-colors">Contacto</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Horarios</h4>
+            <h3 className="font-bold text-lg mb-6">Horarios</h3>
             <ul className="space-y-4 text-gray-300">
               <li className="flex justify-between"><span>Lunes - Viernes:</span> <span className="text-white">9am - 8pm</span></li>
               <li className="flex justify-between"><span>Sábado:</span> <span className="text-white">9am - 1pm</span></li>

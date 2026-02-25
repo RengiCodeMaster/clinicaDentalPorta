@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CLINIC_INFO } from '../../constants';
 
 const Hero: React.FC = () => {
@@ -43,19 +44,22 @@ const Hero: React.FC = () => {
             En Clínica Dental PORTA usamos la mejor tecnología para asegurarnos de que tu visita sea cómoda, segura y sin dolor. Somos tu dentista de confianza en Tingo María.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up delay-200">
-            <a
-              href="#contact"
+            <Link
+              to="/contacto"
               className="w-full sm:w-auto px-8 py-4 bg-porta hover:bg-porta-dark text-white rounded-2xl font-bold shadow-xl shadow-porta/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
               Agendar Cita Online
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Empty column to let the background image shine through on the right */}
+        {/* Spacer to keep grid structure for text on left */}
         <div className="hidden lg:block"></div>
       </div>
+
+
     </section>
   );
 };
