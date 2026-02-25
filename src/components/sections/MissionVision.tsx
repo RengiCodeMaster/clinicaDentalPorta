@@ -37,15 +37,11 @@ const MissionVision: React.FC = () => {
     const closer = useScrollAnimation();
 
     return (
-        <section id="about" className="py-24 bg-white overflow-hidden">
+        <section id="about" className="pt-32 pb-24 md:pt-44 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div ref={intro.ref} className={`mb-24 transition-all duration-700 ${intro.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    {/* Top Accent Line */}
-                    <div className="w-full h-px bg-gray-200 mb-12"></div>
-
                     <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start lg:items-end">
-                        {/* Left Column: Headline */}
                         <div className="lg:w-1/2">
                             <span className="block text-porta font-bold tracking-widest uppercase text-xs mb-6">Lo que somos</span>
                             <h2 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading leading-tight">
@@ -54,7 +50,6 @@ const MissionVision: React.FC = () => {
                             </h2>
                         </div>
 
-                        {/* Right Column: Narrative */}
                         <div className="lg:w-1/2">
                             <p className="text-lg text-gray-600 leading-relaxed font-medium">
                                 Seamos sinceros: a nadie le gusta el sonido de la maquinita ni las inyecciones. Lo entendemos perfectamente.
@@ -67,82 +62,72 @@ const MissionVision: React.FC = () => {
                 </div>
 
                 {/* --- STORY BLOCK 1: LA MISIÓN --- */}
-                <div ref={mission.ref} className="grid lg:grid-cols-2 gap-16 items-center mb-32">
-                    <div className={`relative transition-all duration-700 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                        <div className="absolute inset-0 bg-porta-light/30 rounded-[3rem] transform -rotate-3 scale-105 z-0"></div>
+                <div ref={mission.ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
+                    <div className={`relative transition-all duration-1000 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                        <div className="absolute inset-0 bg-porta-light/20 rounded-[2.5rem] md:rounded-[3rem] transform -rotate-3 scale-105 z-0"></div>
                         <img
                             src="/images/dra-judith-xray.webp"
                             alt="Dra. Judith Analizando Caso"
-                            className="relative z-10 w-full h-[500px] object-cover rounded-[3rem] shadow-2xl"
+                            className="relative z-10 w-full h-[350px] sm:h-[500px] object-cover rounded-[2.5rem] md:rounded-[3rem] shadow-2xl"
                         />
-
                     </div>
 
-                    <div className={`transition-all duration-700 delay-100 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                        <div className="relative pl-6 md:pl-10 border-l-4 border-porta/30">
-                            {/* Watermark Background Text */}
-                            <span className="absolute -top-16 -left-10 text-[120px] font-bold text-gray-50 -z-10 select-none opacity-60 font-outfit hidden md:block">
-                                MISIÓN
-                            </span>
-
-                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-8 leading-tight">
-                                Que te sientas <span className="text-porta block">en casa.</span>
+                    <div className={`transition-all duration-1000 delay-100 ${mission.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                        {/* Mobile: Floating Card | Desktop: Clean Reset */}
+                        <div className="relative z-20 mt-[-60px] lg:mt-0 mx-4 lg:mx-0 p-8 md:p-12 lg:p-0 bg-white/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none rounded-[2rem] lg:rounded-none shadow-xl shadow-porta/5 lg:shadow-none border border-gray-100 lg:border-none text-center lg:text-left">
+                            <span className="inline-block text-porta font-bold tracking-widest uppercase text-[10px] mb-4 lg:hidden">Nuestra Misión</span>
+                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-6 leading-tight">
+                                Que te sientas <span className="text-porta lg:block">en casa.</span>
                             </h3>
 
-                            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
+                            <div className="space-y-6 text-base md:text-lg text-gray-600 leading-relaxed font-medium">
                                 <p>
                                     Para nosotros, tú no eres "el paciente de las 5". Eres un vecino, un amigo, alguien que confía su salud en nuestras manos.
-                                    Nuestra meta de todos los días es simple: <strong>que olvides que estás en un consultorio.</strong>
+                                    Nuestra meta es simple: <strong>que olvides que estás en un consultorio.</strong>
                                 </p>
-                                <p>
-                                    Nos tomamos el tiempo para explicarte todo con manzanitas, sin apuros. Si te duele algo, paramos. Si tienes dudas, las respondemos.
-                                    Queremos ganarnos tu confianza no con palabras bonitas, sino con un trato suave, honesto y lleno de cariño.
+                                <p className="hidden md:block lg:block">
+                                    Nos tomamos el tiempo para explicarte todo sin apuros. Queremos ganarnos tu confianza con un trato suave, honesto y lleno de cariño.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* --- STORY BLOCK 2: LA VISIÓN (Reverse Layout) --- */}
-                <div ref={vision.ref} className="grid lg:grid-cols-2 gap-16 items-center">
-                    <div className={`order-2 lg:order-1 transition-all duration-700 delay-100 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                        <div className="relative pl-6 md:pl-10 border-l-4 border-porta/30">
-                            {/* Watermark Background Text */}
-                            <span className="absolute -top-16 -left-10 text-[120px] font-bold text-gray-50 -z-10 select-none opacity-60 font-outfit hidden md:block">
-                                VISIÓN
-                            </span>
-
-                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-8 leading-tight">
+                {/* --- STORY BLOCK 2: LA VISIÓN (Reverse Layout on Desktop) --- */}
+                <div ref={vision.ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div className={`order-2 lg:order-1 transition-all duration-1000 delay-100 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                        {/* Mobile: Floating Card | Desktop: Clean Reset */}
+                        <div className="relative z-20 mt-[-60px] lg:mt-0 mx-4 lg:mx-0 p-8 md:p-12 lg:p-0 bg-white/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none rounded-[2rem] lg:rounded-none shadow-xl shadow-porta/5 lg:shadow-none border border-gray-100 lg:border-none text-center lg:text-left">
+                            <span className="inline-block text-porta font-bold tracking-widest uppercase text-[10px] mb-4 lg:hidden">Nuestra Visión</span>
+                            <h3 className="text-3xl md:text-5xl font-outfit font-bold text-porta-heading mb-6 leading-tight">
                                 Ser el dentista que <br /><span className="text-porta">recomiendas con orgullo.</span>
                             </h3>
-                            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
+                            <div className="space-y-6 text-base md:text-lg text-gray-600 leading-relaxed font-medium">
                                 <p>
                                     Soñamos con un Tingo María donde la gente ya no esconda su sonrisa por vergüenza o dolor.
-                                    Queremos ser ese lugar al que traes a tus hijos, a tus padres y a tus amigos porque sabes que aquí <strong>no te van a engañar</strong> y te van a tratar bien.
+                                    Queremos ser ese lugar al que traes a tu familia porque sabes que aquí <strong>no te van a engañar</strong>.
                                 </p>
-                                <p>
-                                    Nos capacitamos constantemente y traemos la mejor tecnología, no para presumir, sino para que tú tengas tratamientos que duren y funcionen.
-                                    Queremos ser tus dentistas para toda la vida.
+                                <p className="hidden md:block lg:block">
+                                    Nos capacitamos constantemente y traemos la mejor tecnología para que tú tengas tratamientos que duren y funcionen.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div className={`relative order-1 lg:order-2 transition-all duration-700 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-                        <div className="absolute inset-0 bg-porta-dark/10 rounded-[3rem] transform rotate-3 scale-105 z-0"></div>
+                    <div className={`relative order-1 lg:order-2 transition-all duration-1000 ${vision.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                        <div className="absolute inset-0 bg-porta-dark/10 rounded-[2.5rem] md:rounded-[3rem] transform rotate-3 scale-105 z-0"></div>
                         <img
                             src="/images/dr-alesander-xray.webp"
                             alt="Dr. Alexander Analizando Radiografía"
-                            className="relative z-10 w-full h-[500px] object-cover rounded-[3rem] shadow-2xl"
+                            className="relative z-10 w-full h-[350px] sm:h-[500px] object-cover rounded-[2.5rem] md:rounded-[3rem] shadow-2xl"
                         />
-
                     </div>
                 </div>
 
                 {/* --- EMOTIONAL CLOSER --- */}
-                <div ref={closer.ref} className={`mt-32 text-center transition-all duration-700 ${closer.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <p className="text-2xl md:text-3xl font-outfit font-bold text-gray-400 max-w-3xl mx-auto">
-                        "En Clínica Porta, tu sonrisa no es un número de historia clínica. <br />
+                <div ref={closer.ref} className={`mt-24 md:mt-32 text-center transition-all duration-1000 ${closer.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <p className="text-xl md:text-3xl font-outfit font-bold text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                        "En Clínica Porta, tu sonrisa no es un número de historia clínica. <br className="hidden md:block" />
                         <span className="text-porta-heading">Es nuestra obra maestra y tu carta de presentación al mundo."</span>
                     </p>
                 </div>

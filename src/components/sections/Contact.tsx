@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CLINIC_INFO } from '../../constants';
+import { useLocation } from 'react-router-dom';
+import { CLINIC_INFO, SERVICES } from '../../constants';
 
 const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,11 +23,27 @@ const Contact: React.FC = () => {
   }, []);
 
   /* Form State */
+  const { search } = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     reason: 'Consulta General',
     message: ''
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const serviceId = params.get('service');
+    if (serviceId) {
+      const selectedService = SERVICES.find(s => s.id === serviceId);
+      if (selectedService) {
+        setFormData(prev => ({ ...prev, reason: selectedService.title }));
+      }
+      // Scroll to form if service is specified
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
+    }
+  }, [search]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,16 +60,16 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24" ref={sectionRef}>
+    <section id="contact" className="pt-32 pb-24 md:pt-40" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
 
           <div
             className={`transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
           >
-            <h2 className="text-porta font-bold tracking-widest uppercase text-sm mb-3">Estamos aquí para ti</h2>
-            <p className="text-4xl md:text-5xl font-outfit font-bold text-porta-heading mb-8">Empieza tu transformación hoy mismo</p>
+            <h2 className="text-porta font-bold tracking-widest uppercase text-xs sm:text-sm mb-3">Estamos aquí para ti</h2>
+            <p className="text-3xl sm:text-4xl md:text-5xl font-outfit font-bold text-porta-heading mb-8 leading-tight">Empieza tu transformación hoy mismo</p>
 
             <div className="space-y-8 mb-12">
               <div className="flex items-start gap-4">
@@ -106,7 +124,8 @@ const Contact: React.FC = () => {
           </div>
 
           <div
-            className={`bg-white rounded-[40px] shadow-2xl p-10 border border-gray-100 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            ref={formRef}
+            className={`bg-white rounded-[32px] md:rounded-[40px] shadow-2xl p-6 sm:p-10 border border-gray-100 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -133,9 +152,9 @@ const Contact: React.FC = () => {
                   className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-porta focus:bg-white rounded-2xl transition-all"
                 >
                   <option>Consulta General</option>
-                  <option>Limpieza Dental</option>
-                  <option>Ortodoncia (Brackets)</option>
-                  <option>Diseño de Sonrisa</option>
+                  {SERVICES.map(service => (
+                    <option key={service.id}>{service.title}</option>
+                  ))}
                   <option>Urgencia Dental</option>
                 </select>
               </div>

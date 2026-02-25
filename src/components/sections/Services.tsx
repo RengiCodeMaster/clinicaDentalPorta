@@ -87,7 +87,7 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
         </div>
 
         <Link
-          to="/contacto"
+          to={`/contacto?service=${service.id}`}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-porta hover:bg-porta-dark text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-porta/20 hover:translate-y-[-4px] hover:shadow-xl group"
         >
           <span>Agendar Cita</span>
@@ -102,7 +102,7 @@ const Services: React.FC = () => {
   return (
     <section id="services" className="bg-white overflow-hidden">
       {/* Header Section */}
-      <div className="pt-24 pb-12 text-center max-w-4xl mx-auto px-4">
+      <div className="pt-32 md:pt-44 pb-12 text-center max-w-4xl mx-auto px-4">
         <h2 className="text-porta font-bold tracking-widest uppercase text-sm mb-3">Nuestros Tratamientos</h2>
         <p className="text-4xl md:text-5xl font-outfit font-bold text-gray-700 mb-6">Todo lo que tu sonrisa necesita</p>
         <p className="text-gray-600 text-lg">

@@ -61,7 +61,7 @@
    BLOCK 1: FOUNDER SECTION
    ============================================ */
 .founder-section {
-  padding: 6rem 0 4rem;
+  padding: 10rem 0 4rem;
   background: linear-gradient(180deg, #f8fdfd 0%, #ffffff 100%);
   overflow: hidden;
 }
@@ -405,7 +405,7 @@
 
 @media (max-width: 768px) {
   .founder-section {
-    padding: 4rem 0 3rem;
+    padding: 8rem 0 3rem;
   }
 
   .founder-layout {

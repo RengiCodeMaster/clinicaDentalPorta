@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
               <img
                 src="/images/porta-logo.webp"
                 alt="Clínica Dental Porta Tingo María"
-                className="h-full w-auto object-contain transform scale-150 origin-left ml-2 md:ml-4 transition-transform duration-300"
+                className="h-full w-auto object-contain transform scale-110 sm:scale-150 origin-left ml-2 md:ml-4 transition-transform duration-300"
               />
             </div>
           </Link>
