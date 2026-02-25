@@ -45,7 +45,17 @@ const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© 2026 PORTA Clínica Dental. Todos los derechos reservados.</p>
-          <p>Diseñado para Tingo María, Perú.</p>
+          <p className="flex items-center gap-1">
+            Creado por{' '}
+            <a
+              href="https://jmsolution.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-porta font-bold hover:text-porta-light transition-colors"
+            >
+              jmsolutions
+            </a>
+          </p>
         </div>
       </div>
     </footer>
