@@ -141,14 +141,14 @@ export const SPECIALISTS = [
   {
     name: "C.D. Judith Rosmery Lavado Porta",
     role: "Fundadora & Directora Médica",
-    subtitle: "Cirujano Dentista - C.O.P. 55660",
+    subtitle: "Odontóloga General - C.O.P. 55660",
     bio: "Fundadora y directora médica. Su pasión es transformar vidas a través de sonrisas saludables, combinando experiencia clínica con un trato cálido y personalizado.",
     image: "/images/dra-judith.webp",
     featured: true
   },
   {
     name: "C.D. Alexander Céspedes Adriano",
-    role: "Cirujano Dentista",
+    role: "Odontólogo General",
     subtitle: "C.O.P. 57487",
     bio: "Comprometido con la excelencia y la atención integral. Su enfoque minucioso garantiza diagnósticos precisos y tratamientos efectivos para recuperar tu salud dental.",
     image: "/images/dr-alesander.webp",
@@ -164,7 +164,7 @@ export const SPECIALISTS = [
   },
   {
     name: "C.D. Johanna Sánchez O.",
-    role: "Cirujano Dentista",
+    role: "Odontólogo General",
     subtitle: "C.O.P. 39743",
     bio: "Profesional dedicada a brindar atención dental de calidad. Su compromiso con el bienestar del paciente y su calidez humana hacen de cada consulta una experiencia confortable.",
     image: "/images/dra-johanna.webp",
