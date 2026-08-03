@@ -9,40 +9,42 @@ const PersistentVideo: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // Escuchar el evento directo de la API de Vimeo
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== 'https://player.vimeo.com') return;
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
         
-        // Vimeo SOLO envía 'ready' por defecto. Debemos pedirle explícitamente que nos envíe 'timeupdate'
+        // Cuando Vimeo está listo, nos suscribimos a TODOS los eventos de reproducción
         if (data && data.event === 'ready') {
           if (iframeRef.current && iframeRef.current.contentWindow) {
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'play' }), '*');
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'playing' }), '*');
             iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'timeupdate' }), '*');
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'progress' }), '*');
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'addEventListener', value: 'ended' }), '*');
           }
         }
 
-        // Cuando por fin nos envía 'timeupdate' significa que ya hay video reproduciéndose
-        if (data && (data.event === 'playing' || data.event === 'timeupdate')) {
+        // Sistema anti-congelamiento: Si Vimeo avisa que el video terminó, lo obligamos a darle Play de nuevo
+        if (data && data.event === 'ended') {
+          if (iframeRef.current && iframeRef.current.contentWindow) {
+            iframeRef.current.contentWindow.postMessage(JSON.stringify({ method: 'play' }), '*');
+          }
+        }
+
+        // Cualquier evento que indique que el video avanzó
+        if (data && (data.event === 'play' || data.event === 'playing' || data.event === 'timeupdate' || data.event === 'progress')) {
           setIsVideoLoaded(true);
         }
       } catch (e) {
-        // ignora errores de parseo
+        // Ignorar errores de parseo
       }
     };
 
     window.addEventListener('message', handleMessage);
 
-    // SISTEMA DE SEGURIDAD ABSOLUTA: 
-    // Si por cualquier razón (el navegador bloquea el autoplay, internet muy lento, etc) 
-    // el video no se reproduce en 3.5 segundos, quitamos la pantalla de carga para NUNCA bloquear al usuario.
-    const fallbackTimer = setTimeout(() => {
-      setIsVideoLoaded(true);
-    }, 3500);
-
     return () => {
       window.removeEventListener('message', handleMessage);
-      clearTimeout(fallbackTimer);
     };
   }, []);
 
@@ -73,7 +75,7 @@ const PersistentVideo: React.FC = () => {
         <div className={`absolute inset-0 z-0 overflow-hidden pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <iframe
           ref={iframeRef}
-          src="https://player.vimeo.com/video/1215299144?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&api=1"
+          src="https://player.vimeo.com/video/1215299144?background=1&autoplay=1&loop=1&autopause=0&byline=0&title=0&muted=1&api=1"
           className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
           allow="autoplay; fullscreen; picture-in-picture"
           title="Video de Inicio"
