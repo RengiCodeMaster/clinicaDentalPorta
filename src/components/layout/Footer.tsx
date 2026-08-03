@@ -36,8 +36,8 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-bold text-lg mb-6">Horarios</h3>
             <ul className="space-y-4 text-gray-300">
-              <li className="flex justify-between"><span>Lunes - Viernes:</span> <span className="text-white">9am - 8pm</span></li>
-              <li className="flex justify-between"><span>Sábado:</span> <span className="text-white">9am - 1pm</span></li>
+              <li className="flex justify-between"><span>Lunes - Sábado:</span> <span className="text-white">9am - 1pm</span></li>
+              <li className="flex justify-between"><span></span> <span className="text-white">4pm - 8pm</span></li>
               <li className="flex justify-between"><span>Domingo:</span> <span className="text-porta">Cerrado</span></li>
             </ul>
           </div>

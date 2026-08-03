@@ -36,14 +36,45 @@ const ServiceItem: React.FC<{ service: typeof SERVICES[0]; index: number }> = ({
           : isEven ? 'opacity-0 translate-x-20' : 'opacity-0 -translate-x-20'
           }`}
       >
-        <div className="relative w-full h-full lg:bg-white lg:p-2 lg:rounded-[2.5rem] lg:shadow-2xl lg:shadow-porta/20 lg:rotate-1 lg:hover:rotate-0 transition-transform duration-700 ease-out z-0 lg:z-10">
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-full object-cover rounded-b-[2.5rem] lg:rounded-[2rem] shadow-md lg:shadow-none"
-          />
-          {/* Mobile Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent lg:hidden rounded-b-[2.5rem]"></div>
+        <div className="relative w-full h-full lg:bg-transparent lg:p-0 z-0 lg:z-10 group">
+          {service.images && service.images.length === 2 ? (
+            <div className="relative w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 rounded-b-[2.5rem] lg:rounded-[2.5rem] overflow-hidden shadow-lg border border-white">
+              {/* Decorative background blobs */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-porta-light/30 rounded-full blur-3xl -mr-20 -mt-20 transition-transform duration-1000 group-hover:scale-150"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-porta/20 rounded-full blur-3xl -ml-20 -mb-20 transition-transform duration-1000 group-hover:scale-150"></div>
+              
+              {/* Asymmetric Grid Layout */}
+              <div className="absolute inset-3 lg:inset-6 flex gap-3 lg:gap-6">
+                {/* Image 1 - Larger, pushed to bottom */}
+                <div className="w-[55%] h-[85%] mt-auto rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl transform transition-all duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-porta/20 relative cursor-pointer">
+                  <div className="absolute inset-0 bg-porta-dark/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
+                  <img
+                    src={service.images[0]}
+                    alt={`${service.title} principal`}
+                    className="w-full h-full object-cover transition-transform duration-[2s] hover:scale-110"
+                  />
+                </div>
+                
+                {/* Image 2 - Smaller, pushed to top */}
+                <div className="w-[45%] h-[75%] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl transform transition-all duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-porta/20 relative cursor-pointer">
+                  <div className="absolute inset-0 bg-porta-dark/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
+                  <img
+                    src={service.images[1]}
+                    alt={`${service.title} detalle`}
+                    className="w-full h-full object-cover transition-transform duration-[2s] hover:scale-110"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gray-50 rounded-b-[2.5rem] lg:rounded-[2.5rem] border-2 border-dashed border-gray-200">
+              <svg className="w-16 h-16 text-gray-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="text-gray-400 font-medium">Imágenes Próximamente</span>
+            </div>
+          )}
+          {/* Mobile Overlay Gradient - not needed with new solid background design, but kept for text readability if text overlaps */}
         </div>
 
         {/* Decorative Blur behind image - Desktop only */}

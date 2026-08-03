@@ -204,7 +204,7 @@ const HomePage: React.FC = () => {
                                     {/* Image */}
                                     <div className="sm:w-48 lg:w-56 flex-shrink-0 h-48 sm:h-auto overflow-hidden">
                                         <img
-                                            src={service.image}
+                                            src={service.images && service.images.length > 0 ? service.images[0] : ''}
                                             alt={service.title}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                             loading="lazy"

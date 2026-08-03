@@ -6,6 +6,7 @@ import Footer from '../components/layout/Footer';
 import WhatsAppFab from '../components/chat/WhatsAppFab';
 import ScrollToTop from '../components/common/ScrollToTop';
 import PageTransition from '../components/common/PageTransition';
+import PersistentVideo from '../components/common/PersistentVideo';
 
 import HomePage from '../pages/HomePage';
 import NosotrosPage from '../pages/NosotrosPage';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <PageTransition />
       <div className="relative">
         <Navbar />
+        <PersistentVideo />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

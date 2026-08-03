@@ -27,6 +27,9 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     reason: 'Consulta General',
+    preferredDate: new Date().toISOString().split('T')[0],
+    preferredShift: '',
+    preferredTime: '',
     message: ''
   });
 
@@ -47,7 +50,15 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hola, soy *${formData.name}*.\n\nMe gustaría agendar una cita por: *${formData.reason}*.\n\nMensaje adicional: ${formData.message}`;
+    
+    let dateStr = formData.preferredDate;
+    try {
+      dateStr = new Date(formData.preferredDate + 'T00:00:00').toLocaleDateString('es-ES', { 
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+      });
+    } catch(err) {}
+
+    const text = `Hola, soy *${formData.name}*.\n\nMe gustaría agendar una cita por: *${formData.reason}*.\n\nFecha: *${dateStr}*\nHorario preferido: *${formData.preferredShift ? `${formData.preferredShift} (${formData.preferredTime || 'Sin hora específica'})` : 'Sin preferencia'}*.${formData.message ? `\n\nMensaje adicional: ${formData.message}` : ''}`;
     const url = `https://wa.me/${CLINIC_INFO.whatsapp}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -158,15 +169,111 @@ const Contact: React.FC = () => {
                   <option>Urgencia Dental</option>
                 </select>
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="preferredDate" className="block text-sm font-bold text-gray-700 mb-2">Fecha preferida</label>
+                  <input
+                    id="preferredDate"
+                    type="date"
+                    name="preferredDate"
+                    value={formData.preferredDate}
+                    onChange={handleChange}
+                    min={new Date().toISOString().split('T')[0]}
+                    className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-porta focus:bg-white rounded-2xl transition-all"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Turno preferido</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, preferredShift: 'Mañana', preferredTime: '' }))}
+                      className={`py-4 px-3 rounded-2xl text-sm font-bold transition-all duration-300 border-2 flex flex-col items-center justify-center gap-1 ${
+                        formData.preferredShift === 'Mañana'
+                          ? 'bg-porta text-white border-porta shadow-lg shadow-porta/30 scale-[1.02]'
+                          : 'bg-white text-gray-600 border-gray-100 hover:border-porta/30 hover:bg-porta-accent/50'
+                      }`}
+                    >
+                      <span className="text-2xl">🌅</span>
+                      Mañana
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, preferredShift: 'Tarde', preferredTime: '' }))}
+                      className={`py-4 px-3 rounded-2xl text-sm font-bold transition-all duration-300 border-2 flex flex-col items-center justify-center gap-1 ${
+                        formData.preferredShift === 'Tarde'
+                          ? 'bg-porta text-white border-porta shadow-lg shadow-porta/30 scale-[1.02]'
+                          : 'bg-white text-gray-600 border-gray-100 hover:border-porta/30 hover:bg-porta-accent/50'
+                      }`}
+                    >
+                      <span className="text-2xl">🌇</span>
+                      Tarde
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dynamic Time Selector */}
+              <div className={`transition-all duration-500 overflow-hidden ${formData.preferredShift ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                <label className="block text-sm font-bold text-gray-700 mb-3">
+                  Selecciona una hora para la {formData.preferredShift?.toLowerCase()}
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {formData.preferredShift === 'Mañana' && ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30'].map(time => (
+                    <button
+                      key={time}
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, preferredTime: `${time} AM` }))}
+                      className={`py-2.5 px-1 rounded-xl text-sm font-semibold transition-all duration-200 border-2 ${
+                        formData.preferredTime === `${time} AM`
+                          ? 'bg-porta text-white border-porta shadow-md shadow-porta/30 scale-[1.02]'
+                          : 'bg-gray-50 text-gray-600 border-transparent hover:border-porta/30 hover:bg-porta-accent hover:text-porta'
+                      }`}
+                    >
+                      {time}
+                    </button>
+                  ))}
+                  {formData.preferredShift === 'Tarde' && ['4:00', '4:30', '5:00', '5:30', '6:00', '6:30', '7:00', '7:30'].map(time => (
+                    <button
+                      key={time}
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, preferredTime: `${time} PM` }))}
+                      className={`py-2.5 px-1 rounded-xl text-sm font-semibold transition-all duration-200 border-2 ${
+                        formData.preferredTime === `${time} PM`
+                          ? 'bg-porta text-white border-porta shadow-md shadow-porta/30 scale-[1.02]'
+                          : 'bg-gray-50 text-gray-600 border-transparent hover:border-porta/30 hover:bg-porta-accent hover:text-porta'
+                      }`}
+                    >
+                      {time}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Selected Date/Time summary */}
+                {formData.preferredDate && formData.preferredTime && (
+                  <div className="mt-5 p-4 bg-porta-accent/40 rounded-2xl border border-porta/10 flex items-center gap-4 animate-fade-in">
+                     <div className="bg-porta text-white p-3 rounded-xl shadow-md shadow-porta/20 flex-shrink-0">
+                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                     </div>
+                     <div className="overflow-hidden">
+                       <p className="text-xs text-porta font-bold uppercase tracking-wider mb-0.5">Cita seleccionada</p>
+                       <p className="text-sm text-porta-heading font-medium capitalize truncate">
+                         {new Date(formData.preferredDate + 'T00:00:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })} a las {formData.preferredTime}
+                       </p>
+                     </div>
+                  </div>
+                )}
+              </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">Mensaje (opcional)</label>
+                <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">Mensaje adicional (opcional)</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
-                  placeholder="Cuéntanos cómo podemos ayudarte..."
+                  rows={2}
+                  placeholder="¿Algo que debamos saber?"
                   className="w-full px-5 py-4 bg-gray-50 border-transparent focus:border-porta focus:bg-white rounded-2xl transition-all"
                 ></textarea>
               </div>
